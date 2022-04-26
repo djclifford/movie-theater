@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
+import { actions } from './store/actions';
 import logo from './logo.svg';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
   return (
@@ -27,7 +30,7 @@ function App() {
         </nav>
       </div>
       <main className="mdl-layout__content">
-
+        
       </main>
       <footer>
       </footer>
