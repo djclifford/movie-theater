@@ -3,6 +3,12 @@ import { actions } from './store/actions';
 import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { LandingPage } from './components/LandingPage';
+import { Checkout } from './components/Checkout';
+import { FilmDetails } from './components/FilmDetails';
+import NotFound from './components/NotFound';
+import { Account } from './components/authentication/Account';
+import { PickSeats } from './PickSeats';
 
 function App() {
   return (
@@ -30,7 +36,7 @@ function App() {
         </nav>
       </div>
       <main className="mdl-layout__content">
-        
+        <PickSeats></PickSeats>
       </main>
       <footer>
       </footer>
