@@ -30,6 +30,11 @@ export function PickSeats() {
     },
   };
 
+  let showingId = 1;
+  useEffect(() => {
+    dispatch(actions.fetchReservationsForShowing(showingId));
+  }, [showingId]);
+
   function reserveSeat(seat) {
     console.log(seat);
     dispatch(actions.addSeatToCart(seat, currentShowing));

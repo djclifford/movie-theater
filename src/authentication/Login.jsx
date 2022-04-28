@@ -4,13 +4,13 @@ import { actions } from "../store/actions";
 
 
 export const Login = () => {
-
+  const dispatch = useDispatch();
+  
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordButtonText, setShowPasswordButtonText] = useState("Show");
 
   function login(e) {
     e.preventDefault();
-    const dispatch = useDispatch();
     dispatch(actions.login(
       e.target['email'].value, e.target['password'].value));
   }
@@ -28,15 +28,15 @@ export const Login = () => {
 
           <div style={styles.inputDivs}>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style={styles.inputDivs}>
-              <input id="email" className="mdl-textfield__input" type={showPassword ? "text" : "password"} />
-              
+              <input id="email" className="mdl-textfield__input" />
+
               <label className="mdl-textfield__label" htmlFor="email">Email</label>
             </div>
           </div>
 
           <div style={styles.inputDivs}>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style={styles.inputDivs}>
-              <input id="password" className="mdl-textfield__input" />
+              <input id="password" className="mdl-textfield__input" type={showPassword ? "text" : "password"} />
               <label className="mdl-textfield__label" htmlFor="password">Password</label>
             </div>
           </div>
