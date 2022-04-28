@@ -3,14 +3,25 @@ import { actions } from './store/actions';
 import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { LandingPage } from './components/LandingPage';
-import { Checkout } from './components/Checkout';
-import { FilmDetails } from './components/FilmDetails';
-import NotFound from './components/NotFound';
-import { Account } from './components/authentication/Account';
+import { LandingPage } from './LandingPage';
+import { Checkout } from './Checkout';
+import { FilmDetails } from './FilmDetails';
+import { NotFound } from './NotFound';
+import { Account } from './authentication/Account';
 import { PickSeats } from './PickSeats';
+import 'material-design-lite/dist/material.min.css';
+import 'material-design-lite/dist/material.blue_grey-teal.min.css';
+import 'material-design-lite/material';
+import './Currency.js';
+import './Date.js';
 
 function App() {
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.fetchInitialData());
+  }, []);
+
   return (
     <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header className="mdl-layout__header">
@@ -36,7 +47,7 @@ function App() {
         </nav>
       </div>
       <main className="mdl-layout__content">
-        <PickSeats></PickSeats>
+        <LandingPage />
       </main>
       <footer>
       </footer>

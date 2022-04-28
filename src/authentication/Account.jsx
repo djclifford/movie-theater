@@ -1,11 +1,34 @@
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../store/actions";
+
 export const Account = () => {
+  const dispatch = useDispatch();
+  
+  function register(e) {
+    e.preventDefault();
+    const user = {
+      email: e.target['email'].value,
+      password: e.target['password'].value,
+      name: {
+        given: e.target['given'].value,
+        family: e.target['family'].value
+      },
+      phone: e.target['phone'].value,
+      credit_card: {
+        number: e.target['number'].value,
+        expiration: e.target['expiration'].value
+      },
+    };
+    dispatch(actions.register, user);
+  }
+
   return (
     <section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
       <div className="mdl-card__title mdl-color--primary mdl-color-text--white">
         <h1 className="mdl-card__title-text">Register</h1>
       </div>
       <div className="mdl-card__supporting-text">
-        <form>
+        <form onSubmit={register}>
           <div style={styles.inputDivs}>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input id="email" className="mdl-textfield__input" />
@@ -67,6 +90,13 @@ export const Account = () => {
       </div>
     </section>
   );
+
+  
+  
+
 }
+
+
+
 const showPassword = true;
 const styles = {};

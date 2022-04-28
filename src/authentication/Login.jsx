@@ -1,4 +1,20 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../store/actions";
+
+
 export const Login = () => {
+
+  const [showPassword, setShowPassword] = useState(false);
+
+
+  function login(e) {
+    e.preventDefault();
+    const dispatch = useDispatch();
+    dispatch(actions.login(
+      e.target['email'].value, e.target['password'].value));
+  }
+
   return (
     <section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
       <div className="mdl-card__title mdl-color--primary mdl-color-text--white">
@@ -8,11 +24,12 @@ export const Login = () => {
         <div>
           <p>First time user? <a href="/account">Register</a></p>
         </div>
-        <form>
+        <form onSubmit={login}>
 
           <div style={styles.inputDivs}>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style={styles.inputDivs}>
-              <input id="email" className="mdl-textfield__input" />
+              <input id="email" className="mdl-textfield__input" type={showPassword ? "text" : "password"} />
+              <button text={showPassword ? "Show" : "Hide"} onClick={() => showPassword(!showPassword)} />
               <label className="mdl-textfield__label" htmlFor="email">Email</label>
             </div>
           </div>

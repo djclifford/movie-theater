@@ -1,9 +1,16 @@
+import { useSelector } from "react-redux";
+
 export function LandingPage() {
+  const films = useSelector(state => state.films);
+  const showings = useSelector(state => state.showings);
+  const currentDate = new Date(useSelector(state => state.currentDate));
+  const film = films[4] || {};
+
   return (
     <>
       <section style={styles.header} className="mdl-card mdl-shadow--2dp">
         <div className="mdl-card__title">
-          <span className="mdl-card__title-text">Showings for today</span>
+          <span className="mdl-card__title-text">Showings for {currentDate.toShowingDateString()}</span>
         </div>
       </section>
       <section style={styles.filmsWrapper}>
@@ -11,12 +18,12 @@ export function LandingPage() {
         <section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
           <div style={styles.innerWrapper}>
             <div style={styles.posterDiv}>
-              <img src="/img/posters/1.jpg" alt="" style={styles.poster} />
+              <img src={film.poster_path} alt="" style={styles.poster} />
             </div>
             <div style={styles.textDiv}>
-              <p style={styles.title}>Movie title here</p>
-              <p style={styles.runtimeP}>Runtime minutes</p>
-              <p style={styles.tagline}>Movie tagline here</p>
+              <p style={styles.title}>{film.title}</p>
+              <p style={styles.runtimeP}>{film.runtime}</p>
+              <p style={styles.tagline}>{film.tagline}</p>
             </div>
           </div>
           <div style={styles.showings}>
