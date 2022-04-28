@@ -1,9 +1,11 @@
 import seatImage from './bundledImages/seat.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from './store/actions';
+import { useEffect } from 'react';
 
 export function PickSeats() {
   const dispatch = useDispatch();
+
   let table = { id: 0, table_number: 0, x: 1, y: 1, seats: [] };
   let seat = { id: 0, seat_number: 0, price: 10.75 };
   const currentDate = new Date(useSelector(state => state.currentDate));

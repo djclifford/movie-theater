@@ -47,7 +47,7 @@ function App() {
         </nav>
       </div>
       <main className="mdl-layout__content">
-        <LandingPage />
+        <PickSeats />
       </main>
       <footer>
       </footer>

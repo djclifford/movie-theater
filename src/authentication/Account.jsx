@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { actions } from "../store/actions";
 
 export const Account = () => {
   const dispatch = useDispatch();
-  
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordButtonText, setShowPasswordButtonText] = useState("Show");
+  const styles = {};
+
   function register(e) {
     e.preventDefault();
     const user = {
@@ -39,6 +43,7 @@ export const Account = () => {
           <div style={styles.inputDivs}>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style={styles.inputDivs}>
               <input id="password" type={showPassword ? "text" : "password"} className="mdl-textfield__input" />
+
               <label className="mdl-textfield__label" htmlFor="password">Password</label>
             </div>
           </div>
@@ -49,6 +54,15 @@ export const Account = () => {
               <label className="mdl-textfield__label" htmlFor="password2">Password (again)</label>
             </div>
           </div>
+
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            onClick={() => {
+              setShowPassword(!showPassword);
+              setShowPasswordButtonText(showPassword ? "Show" : "Hide");
+            }
+            }>
+            {showPasswordButtonText}
+          </button>
 
           <div style={styles.inputDivs}>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -90,13 +104,4 @@ export const Account = () => {
       </div>
     </section>
   );
-
-  
-  
-
 }
-
-
-
-const showPassword = true;
-const styles = {};

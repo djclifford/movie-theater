@@ -6,7 +6,7 @@ import { actions } from "../store/actions";
 export const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
-
+  const [showPasswordButtonText, setShowPasswordButtonText] = useState("Show");
 
   function login(e) {
     e.preventDefault();
@@ -29,7 +29,7 @@ export const Login = () => {
           <div style={styles.inputDivs}>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style={styles.inputDivs}>
               <input id="email" className="mdl-textfield__input" type={showPassword ? "text" : "password"} />
-              <button text={showPassword ? "Show" : "Hide"} onClick={() => showPassword(!showPassword)} />
+              
               <label className="mdl-textfield__label" htmlFor="email">Email</label>
             </div>
           </div>
@@ -40,6 +40,15 @@ export const Login = () => {
               <label className="mdl-textfield__label" htmlFor="password">Password</label>
             </div>
           </div>
+
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            onClick={() => {
+              setShowPassword(!showPassword);
+              setShowPasswordButtonText(showPassword ? "Show" : "Hide");
+            }
+            }>
+            {showPasswordButtonText}
+          </button>
 
           <input type="submit" value="Login" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style={styles.submitButton} />
 
